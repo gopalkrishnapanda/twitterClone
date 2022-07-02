@@ -1,27 +1,34 @@
-<%= form_with(model: tweet, local: true) do |form| %>
-  <% if tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+<div class="create-form" style= "width: 100vw;display: flex;flex-direction: column;align-items: center;
+  justify-content: center">
+    <%= form_with(model: tweet, local: true, html: {class: "tweet-form"}) do |form| %>
+      <% if tweet.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
 
-      <ul>
-        <% tweet.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% tweet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :tweet %>
-    <%= form.text_field :tweet %>
-  </div>
+      <div class="input-group mb-2 mr-sm-2 " style="width: 16vw;">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <%= form.text_field :user,class: "form-control", id: "inlineFormInputGroupUsername2",
+         placeholder: "Username" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :user %>
-    <%= form.text_field :user %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="field"  style="width: 27vw;">
+        <%= form.text_field :tweet,class: "form-control mb-2 mr-sm-2", id: "inlineFormInputName2",
+         placeholder: "What's your Tweet today" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "post" ,class: "btn btn-primary my-1" %>
+      </div>
+    <% end %>
+</div>
