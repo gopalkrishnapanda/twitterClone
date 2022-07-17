@@ -2,15 +2,16 @@
 <!-- <%= link_to 'New Tweet', new_tweet_path %> -->
   <% @tweets.reverse_each do |tweet| %>
    <div class="jumbotron" style="background-color: #e3f2fd;">
-      <p class="lead"><%= tweet.user %></p>
-      <!-- <hr class="my-4"> -->
+      <h2 class="display-16"  style = "font-size: large;"><%= tweet.user.email %></h2>
       <h1 class="display-16"><%= tweet.tweet %></h1>
       <button type="button" class="btn btn-primary"><%= link_to 'Show', tweet,
          style: "color:white;text-decoration:none" %></button>
-      <button type="button" class="btn btn-primary"><a><%= link_to 'Edit', edit_tweet_path(tweet),
-         style: "color:white;text-decoration:none" %></a></button>
-      <button type="button" class="btn btn-primary"><a><%= link_to 'Destroy', tweet, method: :delete,
-         data: { confirm: 'Are you sure?' }, style: "color:white;text-decoration:none" %></a></button>
+      <% if tweet.user == current_user %>   
+         <button type="button" class="btn btn-primary"><a><%= link_to 'Edit', edit_tweet_path(tweet),
+            style: "color:white;text-decoration:none" %></a></button>
+         <button type="button" class="btn btn-primary"><a><%= link_to 'Destroy', tweet, method: :delete,
+            data: { confirm: 'Are you sure?' }, style: "color:white;text-decoration:none" %></a></button>
+      <% end %>
       <hr class="my-4">
    </div>
   <% end %>

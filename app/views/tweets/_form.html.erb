@@ -13,20 +13,23 @@
         </div>
       <% end %>
 
-      <div class="input-group mb-2 mr-sm-2 " style="width: 16vw;">
+      <%# <div class="input-group mb-2 mr-sm-2 " style="width: 16vw;">
         <div class="input-group-prepend">
           <div class="input-group-text">@</div>
         </div>
         <%= form.text_field :user,class: "form-control", id: "inlineFormInputGroupUsername2",
          placeholder: "Username" %>
-      </div>
-
+      <%# </div> %>
 
       <div class="field"  style="width: 27vw;">
         <%= form.text_field :tweet,class: "form-control mb-2 mr-sm-2", id: "inlineFormInputName2",
          placeholder: "What's your Tweet today" %>
       </div>
-
+      <div class="field"  style="width: 27vw;">
+        <%= form.number_field :user_id, class: "form-control mb-2 mr-sm-2", id: "tweet_user_id",
+         value: current_user.id, type: :hidden %>
+      </div>
+      <%# <%= current_user.name %>
       <div class="actions">
         <%= form.submit "post" ,class: "btn btn-primary my-1" %>
       </div>

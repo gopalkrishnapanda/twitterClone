@@ -5,7 +5,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @tweet.user %>
+  <%= current_user.email %>
 </p>
 
 <%= link_to 'Edit', edit_tweet_path(@tweet) %> |
